@@ -20,8 +20,10 @@ $(document).ready(function () {
     $("#startButton").on("click", function () {
         readTableTime();
         //Якщо к-сть обладнання 3
-        if (countEquip == 3)
+        if (countEquip == 3) {
             resolvedForE3();
+            gantDiagram();
+        }
     });
 
 // Обчислення для 3 одиниць обладнання
@@ -120,4 +122,107 @@ $(document).ready(function () {
             });
         });
     };
-})
+
+    /*------------ Gant digram ---------*/
+    function gantDiagram() {
+        var curDetLenght = 0,
+            tbody = $('.gantDiagram');
+
+
+        for (var i = 0; i < tableTime.length; i++) {
+            curDetLenght = 0;
+
+            curDetLenght = (function () {
+                for (var j = 1; j < tableTime[i].length; j++) {
+                    curDetLenght += tableTime[i][j];
+                }
+                console.log('curLenght:' + curDetLenght);
+                return curDetLenght;
+            }());
+
+//            for (var k = 0; k < curDetLenght; k++) {
+//                $('.equip-' + i).append('<td>' + k + '</td>')
+//            }
+
+        }
+        for (var i = 1; i <= countEquip; i++) {
+            tbody.append('<tr class="gwm-' + i + '"></tr>');
+        }
+        /*for first GWM*/
+        var eq1Prostoy = [],
+            eq2Prostoy = [],
+            pos = [],
+            pos2_2 = [],
+            pos1 = [],
+            pos2 = [];
+//
+        for (var k = 0; k < countDetail; k++) {
+            for (var i = 0; i < tableTime[k][1]; i++) {
+                tbody.find('.gwm-1').append('<td class="det-' + (k + 1) + '">' + tableTime[k][0] + '</td>');
+            }
+            pos1[k] = tableTime[k][1];
+        }
+        eq1Prostoy.push(tableTime[0][1]);
+        eq2Prostoy.push(tableTime[0][1]);
+        pos.push(tableTime[0][1]);
+        pos2_2.push(tableTime[0][1]);
+
+        /*for first GWM*/
+
+        /*for else GWM*/
+
+        for (var k = 0; k < countDetail; k++) {
+            for (var j = 1; j < countEquip; j++) {
+                if (j == 1) {
+                    var prev_poz = 0;
+                    for (var i = 0; i <= k; i++) {
+                        prev_poz += pos1[i];
+                    }
+//                    console.log(pos[pos.length - 1]);
+//                    console.log(prev_poz);
+                    while ((pos[pos.length - 1] < prev_poz) && (k != 0)) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td></td>');
+                        pos[pos.length - 1] = pos[pos.length - 1] + 1;
+                    }
+                    for (var z = 0; z < eq1Prostoy[eq1Prostoy.length - 1]; z++) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td></td>');
+                    }
+                    for (var i = 0; i < tableTime[k][j + 1]; i++) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td class="det-' + (k + 1) + '">' + (tableTime[k][0]) + '</td>');
+                    }
+
+                    eq1Prostoy.push(eq1Prostoy[eq1Prostoy.length - 1] + tableTime[k][j + 1]);
+                    eq2Prostoy.push(eq2Prostoy[eq2Prostoy.length - 1] + tableTime[k][j + 1]);
+                    pos[pos.length - 1] = pos[pos.length - 1] + tableTime[k][j + 1];
+                    pos2_2.push(pos2_2[pos2_2.length - 1] + tableTime[k][j]);
+                    pos2.push(tableTime[k][j+1]);
+                }
+                if (j == 2) {
+                    var prev_poz = 0;
+                    for (var i = 0; i <= k; i++) {
+                        prev_poz += pos2[i];
+                    }
+                    console.log(pos2_2[pos2_2.length - 1]);
+                    console.log(prev_poz);
+                    while ((pos2_2[pos2_2.length - 1] < prev_poz) && (k != 0)) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td></td>');
+                        pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + 1;
+                    }
+                    for (var z = 0; z < eq2Prostoy[eq2Prostoy.length - 1]; z++) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td></td>');
+                    }
+                    for (var i = 0; i < tableTime[k][j + 1]; i++) {
+                        tbody.find('.gwm-' + (j + 1)).append('<td class="det-' + (k + 1) + '">' + (tableTime[k][0]) + '</td>');
+                    }
+                    pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + tableTime[k][j+1];
+
+                }
+            }
+            eq1Prostoy = [];
+            eq2Prostoy = [];
+        }
+        /*for else GWM*/
+    }
+
+    /*--------- Gant digram end---------*/
+});
