@@ -152,20 +152,24 @@ $(document).ready(function () {
         var eq1Prostoy = [],
             eq2Prostoy = [],
             pos = [],
+            pos2 = [],
             pos2_2 = [],
             pos1 = [],
-            pos2 = [];
+            poz2 = [];
 //
         for (var k = 0; k < countDetail; k++) {
             for (var i = 0; i < tableTime[k][1]; i++) {
                 tbody.find('.gwm-1').append('<td class="det-' + (k + 1) + '">' + tableTime[k][0] + '</td>');
             }
             pos1[k] = tableTime[k][1];
+            poz2[k] = tableTime[k][2];
         }
         eq1Prostoy.push(tableTime[0][1]);
         eq2Prostoy.push(tableTime[0][1]);
+        poz2.unshift((tableTime[0][2])+(tableTime[0][1]));
         pos.push(tableTime[0][1]);
-        pos2_2.push(tableTime[0][1]);
+        pos2.push(tableTime[0][2]); //позицыя 2 гвм
+        pos2_2.push((tableTime[0][2])+(tableTime[0][3])+(tableTime[0][1])); //позицыя 3 гвм
 
         /*for first GWM*/
 
@@ -183,6 +187,7 @@ $(document).ready(function () {
                     while ((pos[pos.length - 1] < prev_poz) && (k != 0)) {
                         tbody.find('.gwm-' + (j + 1)).append('<td></td>');
                         pos[pos.length - 1] = pos[pos.length - 1] + 1;
+                        poz2[0]++;
                     }
                     for (var z = 0; z < eq1Prostoy[eq1Prostoy.length - 1]; z++) {
                         tbody.find('.gwm-' + (j + 1)).append('<td></td>');
@@ -194,13 +199,18 @@ $(document).ready(function () {
                     eq1Prostoy.push(eq1Prostoy[eq1Prostoy.length - 1] + tableTime[k][j + 1]);
                     eq2Prostoy.push(eq2Prostoy[eq2Prostoy.length - 1] + tableTime[k][j + 1]);
                     pos[pos.length - 1] = pos[pos.length - 1] + tableTime[k][j + 1];
-                    pos2_2.push(pos2_2[pos2_2.length - 1] + tableTime[k][j]);
-                    pos2.push(tableTime[k][j+1]);
+//                    pos2_2.push(pos2_2[pos2_2.length - 1] + tableTime[k][j+1]);
+//                    pos2.push(pos2[pos2.length - 1] + tableTime[k][j+1]);
+//                    pos2[pos2.length - 1] = pos2[pos2.length - 1] + tableTime[k][j + 1];
+//                    pos2.push(tableTime[k][j+1]);
                 }
                 if (j == 2) {
                     var prev_poz = 0;
-                    for (var i = 0; i <= k; i++) {
-                        prev_poz += pos2[i];
+                    if(k!=0){
+                    pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + tableTime[k][j+1];
+                    }
+                    for (var i = 0; i <= k+1; i++) {
+                        prev_poz += poz2[i];
                     }
                     console.log(pos2_2[pos2_2.length - 1]);
                     console.log(prev_poz);
@@ -214,7 +224,7 @@ $(document).ready(function () {
                     for (var i = 0; i < tableTime[k][j + 1]; i++) {
                         tbody.find('.gwm-' + (j + 1)).append('<td class="det-' + (k + 1) + '">' + (tableTime[k][0]) + '</td>');
                     }
-                    pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + tableTime[k][j+1];
+
 
                 }
             }
