@@ -18,6 +18,8 @@ $(document).ready(function () {
 
 // Початок обчислень
     $("#startButton").on("click", function () {
+        $('.gantDiagram').html('')
+
         readTableTime();
         //Якщо к-сть обладнання 3
         if (countEquip == 3) {
@@ -166,10 +168,10 @@ $(document).ready(function () {
         }
         eq1Prostoy.push(tableTime[0][1]);
         eq2Prostoy.push(tableTime[0][1]);
-        poz2.unshift((tableTime[0][2])+(tableTime[0][1]));
+        poz2.unshift((tableTime[0][1]));
         pos.push(tableTime[0][1]);
         pos2.push(tableTime[0][2]); //позицыя 2 гвм
-        pos2_2.push((tableTime[0][2])+(tableTime[0][3])+(tableTime[0][1])); //позицыя 3 гвм
+        pos2_2.push((tableTime[0][2]) + (tableTime[0][3]) + (tableTime[0][1])); //позицыя 3 гвм
 
         /*for first GWM*/
 
@@ -206,12 +208,15 @@ $(document).ready(function () {
                 }
                 if (j == 2) {
                     var prev_poz = 0;
-                    if(k!=0){
-                    pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + tableTime[k][j+1];
-                    }
-                    for (var i = 0; i <= k+1; i++) {
-                        prev_poz += poz2[i];
-                    }
+
+//                    if (k != countDetail - 1) {
+
+                        for (var i = 0; i <= k+1; i++) {
+//                            if((k != countDetail - 1)&&(i!=k))
+                            prev_poz += poz2[i];
+                        }
+
+//                    }
                     console.log(pos2_2[pos2_2.length - 1]);
                     console.log(prev_poz);
                     while ((pos2_2[pos2_2.length - 1] < prev_poz) && (k != 0)) {
@@ -224,7 +229,9 @@ $(document).ready(function () {
                     for (var i = 0; i < tableTime[k][j + 1]; i++) {
                         tbody.find('.gwm-' + (j + 1)).append('<td class="det-' + (k + 1) + '">' + (tableTime[k][0]) + '</td>');
                     }
-
+                    if (k != 0) {
+                        pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + tableTime[k][j + 1];
+                    }
 
                 }
             }
