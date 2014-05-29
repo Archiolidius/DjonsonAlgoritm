@@ -130,26 +130,10 @@ $(document).ready(function () {
         var curDetLenght = 0,
             tbody = $('.gantDiagram');
 
-
-        for (var i = 0; i < tableTime.length; i++) {
-            curDetLenght = 0;
-
-            curDetLenght = (function () {
-                for (var j = 1; j < tableTime[i].length; j++) {
-                    curDetLenght += tableTime[i][j];
-                }
-                console.log('curLenght:' + curDetLenght);
-                return curDetLenght;
-            }());
-
-//            for (var k = 0; k < curDetLenght; k++) {
-//                $('.equip-' + i).append('<td>' + k + '</td>')
-//            }
-
-        }
         for (var i = 1; i <= countEquip; i++) {
             tbody.append('<tr class="gwm-' + i + '"></tr>');
         }
+
         /*for first GWM*/
         var eq1Prostoy = [],
             eq2Prostoy = [],
@@ -158,7 +142,7 @@ $(document).ready(function () {
             pos2_2 = [],
             pos1 = [],
             poz2 = [];
-//
+
         for (var k = 0; k < countDetail; k++) {
             for (var i = 0; i < tableTime[k][1]; i++) {
                 tbody.find('.gwm-1').append('<td class="det-' + (k + 1) + '">' + tableTime[k][0] + '</td>');
@@ -172,11 +156,9 @@ $(document).ready(function () {
         pos.push(tableTime[0][1]);
         pos2.push(tableTime[0][2]); //позицыя 2 гвм
         pos2_2.push((tableTime[0][2]) + (tableTime[0][3]) + (tableTime[0][1])); //позицыя 3 гвм
-
         /*for first GWM*/
 
         /*for else GWM*/
-
         for (var k = 0; k < countDetail; k++) {
             for (var j = 1; j < countEquip; j++) {
                 if (j == 1) {
@@ -184,8 +166,6 @@ $(document).ready(function () {
                     for (var i = 0; i <= k; i++) {
                         prev_poz += pos1[i];
                     }
-//                    console.log(pos[pos.length - 1]);
-//                    console.log(prev_poz);
                     while ((pos[pos.length - 1] < prev_poz) && (k != 0)) {
                         tbody.find('.gwm-' + (j + 1)).append('<td></td>');
                         pos[pos.length - 1] = pos[pos.length - 1] + 1;
@@ -201,24 +181,12 @@ $(document).ready(function () {
                     eq1Prostoy.push(eq1Prostoy[eq1Prostoy.length - 1] + tableTime[k][j + 1]);
                     eq2Prostoy.push(eq2Prostoy[eq2Prostoy.length - 1] + tableTime[k][j + 1]);
                     pos[pos.length - 1] = pos[pos.length - 1] + tableTime[k][j + 1];
-//                    pos2_2.push(pos2_2[pos2_2.length - 1] + tableTime[k][j+1]);
-//                    pos2.push(pos2[pos2.length - 1] + tableTime[k][j+1]);
-//                    pos2[pos2.length - 1] = pos2[pos2.length - 1] + tableTime[k][j + 1];
-//                    pos2.push(tableTime[k][j+1]);
                 }
                 if (j == 2) {
                     var prev_poz = 0;
-
-//                    if (k != countDetail - 1) {
-
-                        for (var i = 0; i <= k+1; i++) {
-//                            if((k != countDetail - 1)&&(i!=k))
-                            prev_poz += poz2[i];
-                        }
-
-//                    }
-                    console.log(pos2_2[pos2_2.length - 1]);
-                    console.log(prev_poz);
+                    for (var i = 0; i <= k + 1; i++) {
+                        prev_poz += poz2[i];
+                    }
                     while ((pos2_2[pos2_2.length - 1] < prev_poz) && (k != 0)) {
                         tbody.find('.gwm-' + (j + 1)).append('<td></td>');
                         pos2_2[pos2_2.length - 1] = pos2_2[pos2_2.length - 1] + 1;
