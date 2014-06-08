@@ -1,209 +1,307 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Лабораторна робота №3</title>
-<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="djonson.js"></script>
-<style type="text/css">
-    #diagram a:link {
-        color           : #666;
-        font-weight     : bold;
-        text-decoration : none;
-    }
-
-    #diagram a:visited {
-        color           : #999999;
-        font-weight     : bold;
-        text-decoration : none;
-    }
-
-    #diagram a:active,
-    #diagram a:hover {
-        color           : #bd5a35;
-        text-decoration : underline;
-    }
-
-    .iput-data, #result, #diagram {
-        font-family           : Arial, Helvetica, sans-serif;
-        color                 : #666;
-        font-size             : 12px;
-        text-shadow           : 1px 1px 0px #fff;
-        background            : #eaebec;
-        margin                : 20px;
-        border                : #ccc 1px solid;
-
-        -moz-border-radius    : 3px;
-        -webkit-border-radius : 3px;
-        border-radius         : 3px;
-
-        -moz-box-shadow       : 0 1px 2px #d1d1d1;
-        -webkit-box-shadow    : 0 1px 2px #d1d1d1;
-        box-shadow            : 0 1px 2px #d1d1d1;
-    }
-
-    .iput-data th ,
-    #result th ,
-    #diagram th {
-        padding       : 21px 25px 22px 25px;
-        border-top    : 1px solid #fafafa;
-        border-bottom : 1px solid #e0e0e0;
-
-        background    : #ededed;
-        background    : -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-        background    : -moz-linear-gradient(top, #ededed, #ebebeb);
-    }
-
-    .iput-data th:first-child ,
-    #result th:first-child ,
-    #diagram th:first-child {
-        text-align   : left;
-        padding-left : 20px;
-    }
-
-    .iput-data tr:first-child th:first-child ,
-    #result tr:first-child th:first-child ,
-    #diagram tr:first-child th:first-child {
-        -moz-border-radius-topleft     : 3px;
-        -webkit-border-top-left-radius : 3px;
-        border-top-left-radius         : 3px;
-    }
-
-    .iput-data tr:first-child th:last-child ,
-    #result tr:first-child th:last-child ,
-    #diagram tr:first-child th:last-child {
-        -moz-border-radius-topright     : 3px;
-        -webkit-border-top-right-radius : 3px;
-        border-top-right-radius         : 3px;
-    }
-
-    .iput-data tr ,
-    #result tr ,
-    #diagram tr {
-        text-align   : center;
-        padding-left : 20px;
-    }
-
-    .iput-data td:first-child ,
-    #result td:first-child ,
-    #diagram td:first-child {
-        text-align   : left;
-        padding-left : 20px;
-        border-left  : 0;
-    }
-    .iput-data,
-    #result{
-        width: 700px;
-    }
-    h4{
-        text-align: center;
-    }
-    #result td ,
-    #diagram td {
-        padding       : 18px;
-        border-top    : 1px solid #ffffff;
-        border-bottom : 1px solid #e0e0e0;
-        border-left   : 1px solid #e0e0e0;
-
-        background    : #fafafa;
-        background    : -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
-        background    : -moz-linear-gradient(top, #fbfbfb, #fafafa);
-    }
-
-    #diagram tr.even td {
-        background : #f6f6f6;
-        background : -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
-        background : -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
-    }
-
-    #result tr td:first-child {
-        background: #eaebec;
-    }
-    #result tr:last-child td ,
-    #diagram tr:last-child td {
-        border-bottom : 0;
-    }
-
-    #diagram tr:last-child td:first-child {
-        -moz-border-radius-bottomleft     : 3px;
-        -webkit-border-bottom-left-radius : 3px;
-        border-bottom-left-radius         : 3px;
-    }
-
-    #diagram tr:last-child td:last-child {
-        -moz-border-radius-bottomright     : 3px;
-        -webkit-border-bottom-right-radius : 3px;
-        border-bottom-right-radius         : 3px;
-    }
-
-    #diagram tr:hover td {
-        background : #f2f2f2;
-        background : -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-        background : -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
-    }
-
-    .det-1 {
-        background : red !important;
-    }
-
-    .det-2 {
-        background : green !important;
-    }
-
-    .det-3 {
-        background : silver !important;
-    }
-
-    .det-4 {
-        background : pink !important;
-    }
-    .det-5 {
-        background : #bd5a35 !important;
-    }
-    .det-6 {
-        background : blueviolet !important;
-    }
-    #tableTime .change1:before{
-
-        content: 'Деталь №1'
-    }
-    #tableTime .change2:before{
-        content: 'Деталь №2'
-    }
-    #tableTime .change3:before{
-        content: 'Деталь №3'
-    }
-    #tableTime .change4:before{
-        content: 'Деталь №4'
-    }
-    #tableTime .change5:before{
-        content: 'Деталь №5'
-    }
-    #tableTime .change6:before{
-        content: 'Деталь №6'
-    }
-    #tableTime .change7:before{
-        content: 'Деталь №7'
-    }
-    #tableTime .change8:before{
-        content: 'Деталь №8'
-    }#tableTime .change9:before{
-         content: 'Деталь №9'
-     }
-    #tableTime .change10:before{
-        content: 'Деталь №10'
-    }
-    #tableTime .change11:before{
-        content: 'Деталь №11'
-    }
-
-    #tableTime thead:before{
-        content: 'Деталь №';
-        opacity: 0;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №3</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/djonson.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.1.1/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+<button class="btn btn-primary help" data-toggle="modal" data-target="#help">
+    Довідка
+</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#tests">
+    Тести
+</button>
+<div class="modal fade" id="tests">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Тести</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4>Алгоритм Джонсона дозволяє:</h4>
+
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>знайти найкоротші шляхи між усіма парами вершин зваженого орієнтованого графа</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>знайти найдовші шляхи між усіма парами вершин зваженого орієнтованого графа</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>знайти найкоротші шляхи між усіма парами вершин дерева</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>знайти найдовші шляхи між усіма парами вершин дерева</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Цей алгоритм працює, якщо:</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>у графі містяться ребра тільки з негативною вагою, і відсутні цикли з негативною вагою</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>у графі містяться ребра з позитивною чи негативною вагою, але відсутні цикли з негативною вагою</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>у графі містяться ребра з позитивною чи негативною вагою, і присутні цикли з негативною вагою</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна відповідь не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Діаграма Ганта це:</h4>
+
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це популярний тип діаграм, який використовується для ілюстрації плану, графіка робіт за будь-яким проектом. Є одним з методів планування та управління проектами.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>діаграма, що показує всі можливі логічні відношення для скінченного набору множин.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p> відома як діаграма «риб'ячої кістки» (англ. Fishbone Diagram) або «причинно-наслідкова» діаграма (англ. Cause and Effect Diagram), а також як діаграма «аналізу кореневих причин».</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Які типи простоїв бувають?</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>виробничі та невиробничі</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Достанові та післястанові</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>доопераційні та міжопераційні.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Що таке простій?</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу, на який можна збiльшити тривалiсть операцiї, не змiнюючи момент початку наступної за розкладом робiт операцiї.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання обробки деталi на попередньої за технологiчним маршрутом операцiї та початком виконання наступної операцiї.</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання попередньої операцiї та початком наступної за розкладом роботи обладнання</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Що таке очікування?</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу, на який можна збiльшити тривалiсть операцiї, не змiнюючи момент початку наступної за розкладом робiт операцiї.</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання обробки деталi на попередньої за технологiчним маршрутом операцiї та початком виконання наступної операцiї.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання попередньої операцiї та початком наступної за розкладом роботи обладнання</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Що таке локальний резерв?</h4>
+
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу, на який можна збiльшити тривалiсть операцiї, не змiнюючи момент початку наступної за розкладом робiт операцiї.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання обробки деталi на попередньої за технологiчним маршрутом операцiї та початком виконання наступної операцiї.</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>це iнтервал часу мiж завершенням виконання попередньої операцiї та початком наступної за розкладом роботи обладнання</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Локальний резерв операцiї Lij розраховується як</h4>
+
+                    <div class="testVar ">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>мiнiмальне значення мiж простоєм обладнання k=Qij пiсля виконання операцiї Lij та часом очiкування і-ої деталi перед обробкою на операцiї Li+1j:</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>мiнiмальне значення мiж простоєм обладнання k=Qij пiсля виконання операцiї Lij та часом очiкування j-ої деталi перед обробкою на операцiї Li+1j:</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Методи розв'язання задачi складання розкладу роботи обладнання при однакових технологічних маршрутах обробки</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>тригонометричі</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Імітаційні та аналітичні</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Алгебраїчні та логічні</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Пошук найкращого розкладу виконується за</h4>
+
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Критерієм надійності</p>
+                    </div>
+                    <div class="testVar true">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Критерієм ефективності</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Довжиною виробничого циклу</p>
+                    </div>
+                    <div class="testVar">
+                        <input class="pull-left" type="checkbox"/>
+
+                        <p>Жодна з відповідей не є правильною</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="modal fade" id="help">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Довідка</h4>
+            </div>
+            <div class="modal-body">
+                <p>Дана програма розв'язує задачу Джонсона “про два/три станки”, що має оптимальний алгоритм
+                    розв’язання. Виробничий участок складається з двох або трьох одиниць обладнання, яке обробляє вироби
+                    n-типів за однаковим технологічним маршрутом. Тобто деталі повинні послідовно пройти через усе
+                    обладнання. Програма визначає черговість запуску-випуску виробів за критерієм мінімізації
+                    виробничого циклу (загального часу) виготовлення усіх виробів. Також програма будує діагаму Ганта і
+                    розраховує всі критерї ефективності.</p>
+
+                <p>Вихідними даними для програми є матриця тривалості обробки деталей та кількість ГВМ і деталей</p>
+
+                <p class="text-center">Виконали студенти групи ІК-12</p>
+
+                <p class="text-center">Шпілька О.І.</p>
+
+                <p class="text-center">Кузьменко А.В</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <div class="iput-data">
     <label>Укажіть кількість одиниць обладнання(ГВМ):</label>
     <select id="countEquip">

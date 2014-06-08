@@ -784,4 +784,16 @@ $(document).ready(function () {
     }
 
     /*--------- Gant digram end---------*/
+
+    /*--------- Tets system---------*/
+
+    $('.testVar input').change(function () {
+        if ($(this).parent().hasClass('true')) {
+            $(this).parent().css('background', 'green');
+        } else {
+            $(this).parent().css('background', 'red');
+
+        }
+    })
+    /*--------- Tets system end---------*/
 });
