@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     max-width: 960px;
     width: 100%;
@@ -6,8 +5,6 @@ body {
     padding: 10px 30px 15px;
     box-sizing: border-box;
 }
-=======
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 #diagram a:link {
     color           : #666;
     font-weight     : bold;
@@ -26,20 +23,12 @@ body {
     text-decoration : underline;
 }
 
-<<<<<<< HEAD
 .iput-data, #result, #diagram, .end-rozr {
-=======
-.iput-data, #result, #diagram {
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     font-family           : Arial, Helvetica, sans-serif;
     color                 : #666;
     font-size             : 12px;
     text-shadow           : 1px 1px 0px #fff;
     background            : #eaebec;
-<<<<<<< HEAD
-=======
-    margin                : 20px;
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     border                : #ccc 1px solid;
 
     -moz-border-radius    : 3px;
@@ -49,13 +38,10 @@ body {
     -moz-box-shadow       : 0 1px 2px #d1d1d1;
     -webkit-box-shadow    : 0 1px 2px #d1d1d1;
     box-shadow            : 0 1px 2px #d1d1d1;
-<<<<<<< HEAD
     margin            : 25px 0;
     width            : 100%;
     padding            : 15px;
     box-sizing            : border-box;
-=======
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 }
 
 .iput-data th ,
@@ -71,12 +57,7 @@ body {
 }
 
 .iput-data th:first-child ,
-<<<<<<< HEAD
 #result th:first-child{
-=======
-#result th:first-child ,
-#diagram th:first-child {
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     text-align   : left;
     padding-left : 20px;
 }
@@ -98,43 +79,21 @@ body {
 }
 
 .iput-data tr ,
-<<<<<<< HEAD
 #result tr {
-=======
-#result tr ,
-#diagram tr {
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     text-align   : center;
     padding-left : 20px;
 }
 
 .iput-data td:first-child ,
-<<<<<<< HEAD
 #result td:first-child  {
-=======
-#result td:first-child ,
-#diagram td:first-child {
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     text-align   : left;
     padding-left : 20px;
     border-left  : 0;
 }
-<<<<<<< HEAD
 h4{
     text-align: center;
 }
 #result td{
-=======
-.iput-data,
-#result{
-    width: 700px;
-}
-h4{
-    text-align: center;
-}
-#result td ,
-#diagram td {
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     padding       : 18px;
     border-top    : 1px solid #ffffff;
     border-bottom : 1px solid #e0e0e0;
@@ -198,18 +157,12 @@ h4{
 .det-6 {
     background : blueviolet !important;
 }
-<<<<<<< HEAD
 #tableTime tr:before {
     line-height: 40px;
 
 }
 #tableTime .change1:before{
     content: 'Деталь №1';
-=======
-#tableTime .change1:before{
-
-    content: 'Деталь №1'
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 }
 #tableTime .change2:before{
     content: 'Деталь №2'
@@ -258,7 +211,6 @@ h4{
 }
 .testVar p{
     padding-left: 25px;
-<<<<<<< HEAD
 }
 #diagram table {
     width: 100%;
@@ -267,6 +219,4 @@ h4{
     height: 35px;
     text-align: center;
     border: solid 1px #fff;
-=======
->>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 }
