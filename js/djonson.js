@@ -32,15 +32,20 @@ $(document).ready(function () {
         //Якщо к-сть обладнання 3
         if (countEquip == 3) {
             resolvedForE3();
+<<<<<<< HEAD
         }
         if ( countEquip == 2 ) {
             resolvedForE2();            
+=======
+            gantDiagram();
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
         }
     });
 
 // Обчислення для 3 одиниць обладнання
     function resolvedForE3() {
         sortT();
+<<<<<<< HEAD
         gantDiagram();
         timeZagal(3);
         $(".hideIf2GVM").show(0);
@@ -55,6 +60,12 @@ $(document).ready(function () {
         // yakistPok(2);
     };
 
+=======
+        timeZagal(3);
+        yakistPok(3);
+    };
+
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 // Показники якості
     function yakistPok(gvm) {
         min1(gvm);
@@ -74,6 +85,7 @@ $(document).ready(function () {
         minVyr3(gvm);
         minVyr4(gvm);
         minVyr5(gvm);
+<<<<<<< HEAD
         minVyrCheck(gvm);
     }
 
@@ -91,6 +103,11 @@ $(document).ready(function () {
 
         }
     }
+=======
+    }
+
+// мінімізація незавершеного в-ва
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     function minVyr1(gvm) {
         if (gvm == 3) {
             $("#minVyr1").html('max(max{');
@@ -580,6 +597,7 @@ $(document).ready(function () {
             ;
             $("#timeZagal").html(t3);
         } else {
+<<<<<<< HEAD
             for (var i = 0; i < countDetail; i++) {
                 t1 += tableTime[i][1];
                 t2 = Math.max(t1, t2) + tableTime[i][2];
@@ -622,12 +640,21 @@ $(document).ready(function () {
     }
 // Фунція сортування деталей в правильному порядку
     function sortT() {
+=======
+
+        }
+    }
+
+// Фунція сортування деталей в правильному порядку
+    function sortT(arr1, arr2) {
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
         var arrTemp1 = Array();
         var arrTemp2 = Array();
 
         for (var i = 0; i < countDetail; i++) {
             if ((tableTime[i][1] + tableTime[i][2]) < (tableTime[i][2] + tableTime[i][3])) {
                 arrTemp1[arrTemp1.length] = tableTime[i];
+<<<<<<< HEAD
             };
             if ((tableTime[i][1] + tableTime[i][2]) >= (tableTime[i][2] + tableTime[i][3])) {
                 arrTemp2[arrTemp2.length] = tableTime[i];
@@ -636,6 +663,16 @@ $(document).ready(function () {
 
         genTableData("#table01", arrTemp1);
         genTableData("#table02", arrTemp2);
+=======
+            }
+            ;
+            if ((tableTime[i][1] + tableTime[i][2]) >= (tableTime[i][2] + tableTime[i][3])) {
+                arrTemp2[arrTemp2.length] = tableTime[i];
+            }
+            ;
+        }
+        ;
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 
         arrTemp1.sort(sT1T2);
         arrTemp2.sort(sT2T3);
@@ -652,6 +689,7 @@ $(document).ready(function () {
         genTableData("#table1", tableTime);
     };
 
+<<<<<<< HEAD
 //Сортування двумірного масиву за першим стовцем
     function sT1(a, b) {
         if (a[1] > b[1] ) return 1;
@@ -666,6 +704,8 @@ $(document).ready(function () {
         else return 0;
     };
 
+=======
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
 //Сортування за сумою 1 та 2
     function sT1T2(a, b) {
         if (a[1] + a[2] > b[1] + b[2]) return 1;
@@ -673,7 +713,11 @@ $(document).ready(function () {
         else return 0;
     };
 
+<<<<<<< HEAD
 //Зворотне сортування за сумою 2 та 3
+=======
+//Сортування за сумою 2 та 3
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     function sT2T3(a, b) {
         if (a[2] + a[3] < b[2] + b[3]) return 1;
         else if (a[2] + a[3] > b[2] + b[3]) return -1;
@@ -821,6 +865,7 @@ $(document).ready(function () {
         /*for else GWM*/
 
         // К-сть одиниць простою
+<<<<<<< HEAD
         calcCVM();
     }
 
@@ -862,6 +907,46 @@ function calcCVM () {
         }
     });
 }
+=======
+        stopGVM2 = 0;
+        stopGVM3 = 0;
+        waitOnCVM2 = Array();
+        waitOnCVM3 = Array();
+        var temp = 0
+        $(".gantDiagram .gwm-2 td").each(function (index, value) {
+            var nextTd = 0;
+            if (value.innerHTML == "" && $(".gantDiagram .gwm-2 td:nth-child(" + index + ")").html() != "")
+                stopGVM2++;
+            if (value.innerHTML == "") {
+                temp++;
+                nextTd = $(".gantDiagram .gwm-2 td:nth-child(" + (index + 2) + ")").html();
+                if (nextTd != "") {
+                    if (nextTd != "1")
+                        waitOnCVM2[nextTd] = temp;
+                    temp = 0;
+                }
+                ;
+            }
+        });
+        temp = 0;
+        $(".gantDiagram .gwm-3 td").each(function (index, value) {
+            var nextTd = 0;
+            if (value.innerHTML == "" && $(".gantDiagram .gwm-3 td:nth-child(" + index + ")").html() != "")
+                stopGVM3++;
+            if (value.innerHTML == "") {
+                temp++;
+                nextTd = $(".gantDiagram .gwm-3 td:nth-child(" + (index + 2) + ")").html();
+                if (nextTd != "") {
+                    if (nextTd != "1")
+                        waitOnCVM3[nextTd] = temp;
+                    temp = 0;
+                }
+                ;
+            }
+        });
+    }
+
+>>>>>>> 6201ce6e1fd0f613fb208e9342a91a13d170b8eb
     /*--------- Gant digram end---------*/
 
     /*--------- Tets system---------*/
