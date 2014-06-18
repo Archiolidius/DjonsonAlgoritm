@@ -53,6 +53,7 @@ $(document).ready(function () {
         timeZagal(2);
         $(".hideIf2GVM").hide(0);
         // yakistPok(2);
+        gantDiagram();
     };
 
 // Показники якості
@@ -871,8 +872,10 @@ function calcCVM () {
             $(this).parent().css('background', 'green');
         } else {
             $(this).parent().css('background', 'red');
-
         }
+        $(this).parent().parent().find('input').each(function(){
+            $(this).attr('disabled','disabled')
+        })
     })
     /*--------- Tets system end---------*/
 });
