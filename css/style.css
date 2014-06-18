@@ -1,0 +1,222 @@
+body {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 30px 15px;
+    box-sizing: border-box;
+}
+#diagram a:link {
+    color           : #666;
+    font-weight     : bold;
+    text-decoration : none;
+}
+
+#diagram a:visited {
+    color           : #999999;
+    font-weight     : bold;
+    text-decoration : none;
+}
+
+#diagram a:active,
+#diagram a:hover {
+    color           : #bd5a35;
+    text-decoration : underline;
+}
+
+.iput-data, #result, #diagram, .end-rozr {
+    font-family           : Arial, Helvetica, sans-serif;
+    color                 : #666;
+    font-size             : 12px;
+    text-shadow           : 1px 1px 0px #fff;
+    background            : #eaebec;
+    border                : #ccc 1px solid;
+
+    -moz-border-radius    : 3px;
+    -webkit-border-radius : 3px;
+    border-radius         : 3px;
+
+    -moz-box-shadow       : 0 1px 2px #d1d1d1;
+    -webkit-box-shadow    : 0 1px 2px #d1d1d1;
+    box-shadow            : 0 1px 2px #d1d1d1;
+    margin            : 25px 0;
+    width            : 100%;
+    padding            : 15px;
+    box-sizing            : border-box;
+}
+
+.iput-data th ,
+#result th ,
+#diagram th {
+    padding       : 21px 25px 22px 25px;
+    border-top    : 1px solid #fafafa;
+    border-bottom : 1px solid #e0e0e0;
+
+    background    : #ededed;
+    background    : -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background    : -moz-linear-gradient(top, #ededed, #ebebeb);
+}
+
+.iput-data th:first-child ,
+#result th:first-child{
+    text-align   : left;
+    padding-left : 20px;
+}
+
+.iput-data tr:first-child th:first-child ,
+#result tr:first-child th:first-child ,
+#diagram tr:first-child th:first-child {
+    -moz-border-radius-topleft     : 3px;
+    -webkit-border-top-left-radius : 3px;
+    border-top-left-radius         : 3px;
+}
+
+.iput-data tr:first-child th:last-child ,
+#result tr:first-child th:last-child ,
+#diagram tr:first-child th:last-child {
+    -moz-border-radius-topright     : 3px;
+    -webkit-border-top-right-radius : 3px;
+    border-top-right-radius         : 3px;
+}
+
+.iput-data tr ,
+#result tr {
+    text-align   : center;
+    padding-left : 20px;
+}
+
+.iput-data td:first-child ,
+#result td:first-child  {
+    text-align   : left;
+    padding-left : 20px;
+    border-left  : 0;
+}
+h4{
+    text-align: center;
+}
+#result td{
+    padding       : 18px;
+    border-top    : 1px solid #ffffff;
+    border-bottom : 1px solid #e0e0e0;
+    border-left   : 1px solid #e0e0e0;
+
+    background    : #fafafa;
+    background    : -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background    : -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+
+#diagram tr.even td {
+    background : #f6f6f6;
+    background : -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background : -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+}
+
+#result tr td:first-child {
+    background: #eaebec;
+}
+#result tr:last-child td ,
+#diagram tr:last-child td {
+    border-bottom : 0;
+}
+
+#diagram tr:last-child td:first-child {
+    -moz-border-radius-bottomleft     : 3px;
+    -webkit-border-bottom-left-radius : 3px;
+    border-bottom-left-radius         : 3px;
+}
+
+#diagram tr:last-child td:last-child {
+    -moz-border-radius-bottomright     : 3px;
+    -webkit-border-bottom-right-radius : 3px;
+    border-bottom-right-radius         : 3px;
+}
+
+#diagram tr:hover td {
+    background : #f2f2f2;
+    background : -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background : -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+.det-1 {
+    background : red !important;
+}
+
+.det-2 {
+    background : green !important;
+}
+
+.det-3 {
+    background : silver !important;
+}
+
+.det-4 {
+    background : pink !important;
+}
+.det-5 {
+    background : #bd5a35 !important;
+}
+.det-6 {
+    background : blueviolet !important;
+}
+#tableTime tr:before {
+    line-height: 40px;
+
+}
+#tableTime .change1:before{
+    content: 'Деталь №1';
+}
+#tableTime .change2:before{
+    content: 'Деталь №2'
+}
+#tableTime .change3:before{
+    content: 'Деталь №3'
+}
+#tableTime .change4:before{
+    content: 'Деталь №4'
+}
+#tableTime .change5:before{
+    content: 'Деталь №5'
+}
+#tableTime .change6:before{
+    content: 'Деталь №6'
+}
+#tableTime .change7:before{
+    content: 'Деталь №7'
+}
+#tableTime .change8:before{
+    content: 'Деталь №8'
+}#tableTime .change9:before{
+     content: 'Деталь №9'
+ }
+#tableTime .change10:before{
+    content: 'Деталь №10'
+}
+#tableTime .change11:before{
+    content: 'Деталь №11'
+}
+#tableTime .change12:before{
+    content: 'Деталь №12'
+}#tableTime .change13:before{
+     content: 'Деталь №13'
+ }
+#tableTime .change14:before{
+    content: 'Деталь №14'
+}
+
+#tableTime thead:before{
+    content: 'Деталь №';
+    opacity: 0;
+}
+.help{
+    margin-left: 20px;
+}
+.testVar p{
+    padding-left: 25px;
+}
+#diagram table {
+    width: 100%;
+}
+#diagram td {
+    height: 35px;
+    text-align: center;
+    border: solid 1px #fff;
+}
