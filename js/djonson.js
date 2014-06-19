@@ -867,15 +867,31 @@ function calcCVM () {
 
     /*--------- Tets system---------*/
 
-    $('.testVar input').change(function () {
-        if ($(this).parent().hasClass('true')) {
-            $(this).parent().css('background', 'green');
-        } else {
-            $(this).parent().css('background', 'red');
-        }
-        $(this).parent().parent().find('input').each(function(){
-            $(this).attr('disabled','disabled')
+//    $('.testVar input').change(function () {
+//        if ($(this).parent().hasClass('true')) {
+//            $(this).parent().css('background', 'green');
+//        } else {
+//            $(this).parent().css('background', 'red');
+//        }
+//
+//    });
+    $('.test-rez').on('click',function(){
+        var true_answer = 0;
+        $('#tests').find('input').each(function(){
+            if($(this).prop('checked')){
+                if ($(this).parent().hasClass('true')) {
+                    true_answer++
+                    $(this).parent().css('background', 'green');
+                } else {
+                    $(this).parent().css('background', 'red');
+                }
+                $(this).parent().parent().find('input').each(function(){
+                    $(this).attr('disabled','disabled')
+                })
+            }
         })
-    })
+        $('.true_answer').parent().show();
+        $('.true_answer').text(true_answer);
+    });
     /*--------- Tets system end---------*/
 });
