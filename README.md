@@ -1,4 +1,2 @@
-DjonsonAlgoritm
+Решение задачи джонсона для 2 или 3 станков
 ===============
-
-This is OSTAP lab program
